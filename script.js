@@ -39,16 +39,16 @@ form.addEventListener("submit", search);
 formatDate();
 
 function showWeather(response) {
-  let h1 = document.querySelector("h1");
+  let h2 = document.querySelector("current-temperature");
   let temperature = Math.round(response.data.main.temp);
-  h1.innerHTML = `It is currently ${temperature}° in ${response.data.name}`;
+  h2.innerHTML = `It is currently ${temperature}° in ${response.data.name}`;
 }
 
 function retrievePosition(position) {
-  let apiKey = "3a30eef504fe086affe177088ed81b80";
+  let apiKey = "2bc5f2cd163f73cc74189901c43777b2";
+  let apiUrl = `https://api.https://openweathermap.org/city/5128581&units=metric&appid=${apiKey}`;
   console.log(position.coords.latitude);
   console.log(position.coords.longitude);
-  let url = `https://api.openweathermap.org/data/2.5/weather?&units=metric&appid=${apiKey}`;
-  axios.get(url).then(showWeather);
+  axios.get(apiUrl).then(showWeather);
 }
 navigator.geolocation.getCurrentPosition(retrievePosition);
